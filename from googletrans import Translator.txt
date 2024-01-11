@@ -1,0 +1,24 @@
+from googletrans import Translator
+import time
+
+def translate_text(text, target_language):
+    translator = Translator()
+    translated = translator.translate(text, dest=target_language)
+    return translated.text
+
+if __name__ == "__main__":
+    while True:
+        text = input("Enter a sentence to translate (or 'exit' to quit): ")
+        
+        if text.lower() == 'exit':
+            break
+        
+        target_language = input("Enter the target language (e.g., 'es' for Spanish): ")
+        
+        try:
+            translation = translate_text(text, target_language)
+            print(f"Translation: {translation}")
+        except Exception as e:
+            print(f"Translation error: {e}")
+        
+        time.sleep(1)  # To avoid overloading the translation service
